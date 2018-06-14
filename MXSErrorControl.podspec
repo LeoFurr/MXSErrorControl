@@ -51,10 +51,10 @@ Pod::Spec.new do |s|
   #  profile URL.
   #
 
-  s.author             = { "Maciej Necki" => "maciej@myx.systems" }
+  s.author             = "Maciej Necki"
   # Or just: s.author    = "Maciej"
   # s.authors            = { "Maciej" => "maciej@myx.systems" }
-  # s.social_media_url   = "http://twitter.com/Maciej"
+  s.social_media_url   = "http://twitter.com/maciejnecki"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  # s.source       = { :git => "http://EXAMPLE/MXSErrorControl.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/LeoFurr/MXSErrorControl.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
