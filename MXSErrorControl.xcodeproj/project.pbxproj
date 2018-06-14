@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		52A60CFE20D28FC60072F9EF /* MXSErrorControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 52A60CFC20D28FC50072F9EF /* MXSErrorControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		52A60D0520D291910072F9EF /* MXSErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A60D0420D291910072F9EF /* MXSErrorController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		52A60CF920D28FC50072F9EF /* MXSErrorControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MXSErrorControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A60CFC20D28FC50072F9EF /* MXSErrorControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXSErrorControl.h; sourceTree = "<group>"; };
 		52A60CFD20D28FC60072F9EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52A60D0420D291910072F9EF /* MXSErrorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MXSErrorController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 			children = (
 				52A60CFC20D28FC50072F9EF /* MXSErrorControl.h */,
 				52A60CFD20D28FC60072F9EF /* Info.plist */,
+				52A60D0420D291910072F9EF /* MXSErrorController.swift */,
 			);
 			path = MXSErrorControl;
 			sourceTree = "<group>";
@@ -95,6 +98,7 @@
 				TargetAttributes = {
 					52A60CF820D28FC50072F9EF = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -130,6 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52A60D0520D291910072F9EF /* MXSErrorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +264,7 @@
 		52A60D0220D28FC60072F9EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -276,6 +282,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = systems.myx.MXSErrorControl;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -284,6 +291,7 @@
 		52A60D0320D28FC60072F9EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
