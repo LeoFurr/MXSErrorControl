@@ -25,7 +25,7 @@ public class MXSErrorController {
     public var userVisibleInformation: String
     
     //The only required parameter
-    init(userVisibleInformation: String) {
+    public init(userVisibleInformation: String) {
         self.userVisibleInformation = userVisibleInformation
     }
     
