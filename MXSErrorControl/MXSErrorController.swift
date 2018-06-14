@@ -32,7 +32,7 @@ public class MXSErrorController {
     //////////////////////////////
     //MARK: Error Package
     private let newLine = "\n"
-    public var fullErrorDescription: String {
+    private var fullErrorDescription: String {
         return systemInformation + newLine + customErrorInformation
     }
     
