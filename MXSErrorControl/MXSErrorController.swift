@@ -15,14 +15,14 @@ public class MXSErrorController {
     
     //////////////////////////////
     //MARK: Basic Error Info
-    let systemInformation: String = NSError().description
+    private let systemInformation: String = NSError().description
     private let applicationName: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String
     
     
     //////////////////////////////
     //MARK: Custom Error Info
-    var customErrorInformation: String = ""
-    var userVisibleInformation: String
+    public var customErrorInformation: String = ""
+    public var userVisibleInformation: String
     
     //The only required parameter
     init(userVisibleInformation: String) {
@@ -32,7 +32,7 @@ public class MXSErrorController {
     //////////////////////////////
     //MARK: Error Package
     private let newLine = "\n"
-    var fullErrorDescription: String {
+    public var fullErrorDescription: String {
         return systemInformation + newLine + customErrorInformation
     }
     
@@ -43,7 +43,7 @@ public class MXSErrorController {
     
     private let currentView = UIApplication.shared.keyWindow?.rootViewController
     
-    func presentAlert(reportEmail: String) {
+    public func presentAlert(reportEmail: String) {
         let alertController = UIAlertController(title: "An Error Occured", message: userVisibleInformation, preferredStyle: .alert)
         
         //Check if mail services are available
@@ -71,3 +71,4 @@ public class MXSErrorController {
         currentView?.present(alertController, animated: true)
     }
 }
+
