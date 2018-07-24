@@ -27,13 +27,14 @@ public class MXSErrorController {
     //MARK: Custom Error Info
     public var userVisibleTitle: String
     public var userVisibleInformation: String
-    public var reportEmail: String = ""
+    public var reportEmail: String
     public var customErrorInformation: String = ""
     
     //Initialisers
-    public init(userVisibleTitle: String, userVisibleInformation: String) {
+    public init(userVisibleTitle: String, userVisibleInformation: String, reportEmail: String) {
         self.userVisibleTitle = userVisibleTitle
         self.userVisibleInformation = userVisibleInformation
+        self.reportEmail = reportEmail
     }
     
     //////////////////////////////
