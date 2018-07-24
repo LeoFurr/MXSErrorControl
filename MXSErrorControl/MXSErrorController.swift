@@ -25,11 +25,12 @@ public class MXSErrorController {
     
     //////////////////////////////
     //MARK: Custom Error Info
-    public var customErrorInformation: String = ""
     public var userVisibleTitle: String
     public var userVisibleInformation: String
+    public var reportEmail: String = ""
+    public var customErrorInformation: String = ""
     
-    //The only required parameter
+    //Initialisers
     public init(userVisibleTitle: String, userVisibleInformation: String) {
         self.userVisibleTitle = userVisibleTitle
         self.userVisibleInformation = userVisibleInformation
@@ -49,7 +50,7 @@ public class MXSErrorController {
     
     private let currentView = UIApplication.shared.keyWindow?.rootViewController
     
-    public func presentAlert(reportEmail: String) {
+    public func presentAlert() {
         let alertController = UIAlertController(title: userVisibleTitle, message: userVisibleInformation, preferredStyle: .alert)
         
         //Check if mail services are available
@@ -59,7 +60,7 @@ public class MXSErrorController {
             alertController.addAction(UIAlertAction(title: "Tell Us", style: .default, handler: { (_) in
                 let emailTitle = "Bug Report for \(self.applicationName)"
                 let messageBody = self.fullErrorDescription
-                let toRecipents = [reportEmail]
+                let toRecipents = [self.reportEmail]
                 let mailComposerView: MFMailComposeViewController = MFMailComposeViewController()
                 mailComposerView.mailComposeDelegate = self.currentView as? MFMailComposeViewControllerDelegate
                 mailComposerView.setSubject(emailTitle)
