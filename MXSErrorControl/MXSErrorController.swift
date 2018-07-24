@@ -15,7 +15,7 @@ public class MXSErrorController {
     
     //////////////////////////////
     //MARK: Basic Error Info
-    private let systemInformation: String = NSError().description
+    private let systemInformation: String = ""
     private let applicationName: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String
     
     
@@ -49,7 +49,7 @@ public class MXSErrorController {
         //Check if mail services are available
         if MFMailComposeViewController.canSendMail() {
             
-            //If user wants to report the bug, give an option to send it via emal
+            //If user wants to report the bug, give an option to send it via email
             alertController.addAction(UIAlertAction(title: "Tell Us", style: .default, handler: { (_) in
                 let emailTitle = "Bug Report for \(self.applicationName)"
                 let messageBody = self.fullErrorDescription
