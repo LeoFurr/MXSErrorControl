@@ -20,7 +20,7 @@ public class MXSErrorController {
                                             UIDevice.current.localizedModel +
                                             UIDevice.current.model +
                                             String(describing: UIDevice.current.orientation)
-    private let applicationName: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String
+    private let applicationName: String
     
     
     //////////////////////////////
@@ -30,11 +30,14 @@ public class MXSErrorController {
     public var reportEmail: String
     public var customErrorInformation: String = ""
     
+    
+    //////////////////////////////
     //Initialisers
-    public init(userVisibleTitle: String, userVisibleInformation: String, reportEmail: String) {
+    public init(userVisibleTitle: String, userVisibleInformation: String, reportEmail: String, applicationName: String) {
         self.userVisibleTitle = userVisibleTitle
         self.userVisibleInformation = userVisibleInformation
         self.reportEmail = reportEmail
+        self.applicationName = applicationName
     }
     
     //////////////////////////////
