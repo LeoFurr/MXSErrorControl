@@ -52,9 +52,16 @@ public class MXSErrorController {
     //MARK: Error Presentation
     
     
-    private let currentView = UIApplication.shared.keyWindow?.rootViewController?.presentationController?.presentedViewController
-    
     public func presentAlert() {
+        
+        //Show on top of everything
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let currentView = UIViewController()
+        currentView.view.backgroundColor = .clear
+        window.rootViewController = currentView
+        window.windowLevel = UIWindowLevelAlert + 1
+        window.makeKeyAndVisible()
+        
         let alertController = UIAlertController(title: userVisibleTitle, message: userVisibleInformation, preferredStyle: .alert)
         
         //Check if mail services are available
@@ -66,20 +73,19 @@ public class MXSErrorController {
                 let messageBody = self.fullErrorDescription
                 let toRecipents = [self.reportEmail]
                 let mailComposerView: MFMailComposeViewController = MFMailComposeViewController()
-                mailComposerView.mailComposeDelegate = self.currentView as? MFMailComposeViewControllerDelegate
+                mailComposerView.mailComposeDelegate = currentView as? MFMailComposeViewControllerDelegate
                 mailComposerView.setSubject(emailTitle)
                 mailComposerView.setMessageBody(messageBody, isHTML: false)
                 mailComposerView.setToRecipients(toRecipents)
                 
-                self.currentView?.present(mailComposerView, animated: true, completion: nil)
+                currentView.present(mailComposerView, animated: true, completion: nil)
             }))
         }
         
         //Just dismiss the alert
         alertController.addAction(UIAlertAction(title: "Carry On", style: .default, handler: nil))
         
-        
-        currentView?.present(alertController, animated: true)
+        currentView.present(alertController, animated: true)
     }
 }
 
