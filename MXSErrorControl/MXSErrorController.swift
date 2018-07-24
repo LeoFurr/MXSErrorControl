@@ -22,11 +22,12 @@ public class MXSErrorController {
     //////////////////////////////
     //MARK: Custom Error Info
     public var customErrorInformation: String = ""
-    public var userVisibleInformation: String
+    public var userVisibleTitle: String
+    public var userVisibleInformation: String = ""
     
     //The only required parameter
-    public init(userVisibleInformation: String) {
-        self.userVisibleInformation = userVisibleInformation
+    public init(userVisibleTitle: String) {
+        self.userVisibleTitle = userVisibleTitle
     }
     
     //////////////////////////////
@@ -44,7 +45,7 @@ public class MXSErrorController {
     private let currentView = UIApplication.shared.keyWindow?.rootViewController
     
     public func presentAlert(reportEmail: String) {
-        let alertController = UIAlertController(title: "An Error Occured", message: userVisibleInformation, preferredStyle: .alert)
+        let alertController = UIAlertController(title: userVisibleTitle, message: userVisibleInformation, preferredStyle: .alert)
         
         //Check if mail services are available
         if MFMailComposeViewController.canSendMail() {
