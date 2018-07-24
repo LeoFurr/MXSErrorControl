@@ -15,7 +15,11 @@ public class MXSErrorController {
     
     //////////////////////////////
     //MARK: Basic Error Info
-    private let systemInformation: String = ""
+    private let systemInformation: String = UIDevice.current.systemName +
+                                            UIDevice.current.systemVersion +
+                                            UIDevice.current.localizedModel +
+                                            UIDevice.current.model +
+                                            String(describing: UIDevice.current.orientation)
     private let applicationName: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String
     
     
@@ -23,11 +27,12 @@ public class MXSErrorController {
     //MARK: Custom Error Info
     public var customErrorInformation: String = ""
     public var userVisibleTitle: String
-    public var userVisibleInformation: String = ""
+    public var userVisibleInformation: String
     
     //The only required parameter
-    public init(userVisibleTitle: String) {
+    public init(userVisibleTitle: String, userVisibleInformation: String) {
         self.userVisibleTitle = userVisibleTitle
+        self.userVisibleInformation = userVisibleInformation
     }
     
     //////////////////////////////
