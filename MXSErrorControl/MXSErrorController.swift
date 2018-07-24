@@ -52,7 +52,7 @@ public class MXSErrorController {
     //MARK: Error Presentation
     
     
-    private let currentView = UIApplication.shared.keyWindow?.rootViewController?.presentationController
+    private let currentView = UIApplication.shared.keyWindow?.rootViewController?.presentationController?.presentedViewController
     
     public func presentAlert() {
         let alertController = UIAlertController(title: userVisibleTitle, message: userVisibleInformation, preferredStyle: .alert)
