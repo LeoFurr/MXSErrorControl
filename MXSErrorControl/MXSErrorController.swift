@@ -75,18 +75,30 @@ public class MXSErrorController {
             
             //If user wants to report the bug, give an option to send it via email
             alertController.addAction(UIAlertAction(title: "Tell Us", style: .default, handler: { (_) in
-                let presentationView = UIApplication.shared.keyWindow?.rootViewController
+//                let presentationView = UIApplication.shared.keyWindow?.rootViewController
+//
+//                let emailTitle = "Bug Report for \(self.applicationName)"
+//                let messageBody = self.fullErrorDescription
+//                let toRecipents = [self.reportEmail]
+//                let mailComposerView: MFMailComposeViewController = MFMailComposeViewController()
+//                mailComposerView.mailComposeDelegate = presentationView as? MFMailComposeViewControllerDelegate
+//                mailComposerView.setSubject(emailTitle)
+//                mailComposerView.setMessageBody(messageBody, isHTML: false)
+//                mailComposerView.setToRecipients(toRecipents)
                 
-                let emailTitle = "Bug Report for \(self.applicationName)"
-                let messageBody = self.fullErrorDescription
-                let toRecipents = [self.reportEmail]
-                let mailComposerView: MFMailComposeViewController = MFMailComposeViewController()
-                mailComposerView.mailComposeDelegate = presentationView as? MFMailComposeViewControllerDelegate
-                mailComposerView.setSubject(emailTitle)
-                mailComposerView.setMessageBody(messageBody, isHTML: false)
-                mailComposerView.setToRecipients(toRecipents)
+//                presentationView?.present(mailComposerView, animated: true, completion: nil)
                 
-                presentationView?.present(mailComposerView, animated: true, completion: nil)
+                let subject = "Bug Report for \(self.applicationName)"
+                let body = self.fullErrorDescription
+                let urlString = "mailto:\(self.reportEmail)?subject=\(subject)&body=\(body)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                let url = URL(string: urlString!)
+
+                
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url!)
+                } else {
+                    UIApplication.shared.openURL(url!)
+                }
             }))
         }
         
