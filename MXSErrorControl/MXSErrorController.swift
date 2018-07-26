@@ -17,9 +17,7 @@ public class MXSErrorController {
     //MARK: Basic Error Info
     private let systemInformation: String = UIDevice.current.systemName +
                                             UIDevice.current.systemVersion +
-                                            UIDevice.current.localizedModel +
-                                            UIDevice.current.model +
-                                            String(describing: UIDevice.current.orientation)
+                                            UIDevice.current.localizedModel
     private let applicationName: String
     
     
