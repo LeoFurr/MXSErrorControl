@@ -52,15 +52,21 @@ public class MXSErrorController {
     //MARK: Error Presentation
     
     
-    public func presentAlert() {
-        
-        //Show on top of everything
+    ///Creates a View Controller embedded in a vindow which sits on top of everything in the app.
+    ///- Note: This can be used to present alerts, etc, regardless of the view hierarchy.
+    func createSurfaceViewController() -> UIViewController {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let currentView = UIViewController()
-        currentView.view.backgroundColor = .clear
-        window.rootViewController = currentView
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .clear
+        window.rootViewController = viewController
         window.windowLevel = UIWindowLevelAlert + 1
         window.makeKeyAndVisible()
+
+        return viewController
+    }
+    
+    
+    public func presentAlert() {
         
         let alertController = UIAlertController(title: userVisibleTitle, message: userVisibleInformation, preferredStyle: .alert)
         
@@ -69,23 +75,25 @@ public class MXSErrorController {
             
             //If user wants to report the bug, give an option to send it via email
             alertController.addAction(UIAlertAction(title: "Tell Us", style: .default, handler: { (_) in
+                let presentationView = self.createSurfaceViewController()
+                
                 let emailTitle = "Bug Report for \(self.applicationName)"
                 let messageBody = self.fullErrorDescription
                 let toRecipents = [self.reportEmail]
                 let mailComposerView: MFMailComposeViewController = MFMailComposeViewController()
-                mailComposerView.mailComposeDelegate = currentView as? MFMailComposeViewControllerDelegate
+                mailComposerView.mailComposeDelegate = presentationView as? MFMailComposeViewControllerDelegate
                 mailComposerView.setSubject(emailTitle)
                 mailComposerView.setMessageBody(messageBody, isHTML: false)
                 mailComposerView.setToRecipients(toRecipents)
                 
-                currentView.present(mailComposerView, animated: true, completion: nil)
+                presentationView.present(mailComposerView, animated: true, completion: nil)
             }))
         }
         
         //Just dismiss the alert
         alertController.addAction(UIAlertAction(title: "Carry On", style: .default, handler: nil))
         
-        currentView.present(alertController, animated: true)
+        createSurfaceViewController().present(alertController, animated: true)
     }
 }
 
