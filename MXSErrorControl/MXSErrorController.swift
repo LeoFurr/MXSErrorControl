@@ -75,7 +75,7 @@ public class MXSErrorController {
             
             //If user wants to report the bug, give an option to send it via email
             alertController.addAction(UIAlertAction(title: "Tell Us", style: .default, handler: { (_) in
-                let presentationView = self.createSurfaceViewController()
+                let presentationView = UIApplication.shared.keyWindow?.rootViewController
                 
                 let emailTitle = "Bug Report for \(self.applicationName)"
                 let messageBody = self.fullErrorDescription
@@ -86,7 +86,7 @@ public class MXSErrorController {
                 mailComposerView.setMessageBody(messageBody, isHTML: false)
                 mailComposerView.setToRecipients(toRecipents)
                 
-                presentationView.present(mailComposerView, animated: true, completion: nil)
+                presentationView?.present(mailComposerView, animated: true, completion: nil)
             }))
         }
         
